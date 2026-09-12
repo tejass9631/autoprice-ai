@@ -1496,38 +1496,42 @@
           owner: owner
         };
 
-        // Candidate endpoints: works on Vercel production (/api/analyze), local dev server, or direct FastAPI
+        // Candidate endpoints: works on fullstack production, local dev, or GitHub Pages
         const isLocalDev = window.location.protocol === 'file:' || 
                            (window.location.hostname === 'localhost' && window.location.port !== '') ||
                            (window.location.hostname === '127.0.0.1' && window.location.port !== '');
-        
-        const candidateEndpoints = isLocalDev
-          ? ['http://127.0.0.1:8000/analyze', '/api/analyze', '/analyze']
-          : ['/api/analyze', '/analyze', 'http://127.0.0.1:8000/analyze'];
+        const isGithubPages = window.location.hostname.includes('github.io');
 
         let data = null;
-        for (const endpoint of candidateEndpoints) {
-          try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 6000);
-            const response = await fetch(endpoint, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload),
-              signal: controller.signal
-            });
-            clearTimeout(timeoutId);
 
-            if (response.ok) {
-              data = await response.json();
-              break;
+        if (!isGithubPages) {
+          const candidateEndpoints = isLocalDev
+            ? ['http://127.0.0.1:8000/analyze', '/api/analyze', '/analyze']
+            : ['/api/analyze', '/analyze', 'http://127.0.0.1:8000/analyze'];
+
+          for (const endpoint of candidateEndpoints) {
+            try {
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 2500);
+              const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+                signal: controller.signal
+              });
+              clearTimeout(timeoutId);
+
+              if (response.ok) {
+                data = await response.json();
+                break;
+              }
+            } catch (fetchErr) {
+              // Try next candidate endpoint
             }
-          } catch (fetchErr) {
-            // Try next candidate endpoint
           }
         }
 
-        // Resilient fallback: estimate via client engine if server unreachable
+        // Resilient fallback: instant high-precision client engine on GitHub Pages or offline
         if (!data) {
           data = calculateClientValuation(payload);
         }
