@@ -1,11 +1,21 @@
 import os
+import sys
+import warnings
 import joblib
 import numpy as np
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-app = FastAPI(title="AutoPrice AI Backend")
+warnings.filterwarnings("ignore")
+
+app = FastAPI(
+    title="AutoPrice AI — Full-Stack Valuation Platform",
+    description="Machine learning valuation engine with interactive 3D studio and real-time inference",
+    version="1.0.0"
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -15,19 +25,34 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-# Load Models
-best_model = joblib.load("best_model.pkl")
-scaler = joblib.load("scaler.pkl")
-feature_columns = joblib.load("feature_columns.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def resolve_file(filename: str) -> str:
+    candidates = [
+        os.path.join(BASE_DIR, filename),
+        os.path.join(BASE_DIR, "frontend", filename),
+        os.path.join(os.getcwd(), filename),
+        os.path.join(os.getcwd(), "frontend", filename),
+        filename
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            return p
+    return os.path.join(BASE_DIR, filename)
+
+# Load Trained ML Models
+best_model = joblib.load(resolve_file("best_model.pkl"))
+scaler = joblib.load(resolve_file("scaler.pkl"))
+feature_columns = joblib.load(resolve_file("feature_columns.pkl"))
 fc_map = {name: i for i, name in enumerate(feature_columns)}
 
-kmeans = joblib.load("kmeans_model.pkl")
-scaler_cluster = joblib.load("cluster_scaler.pkl")
-cluster_names = joblib.load("cluster_names.pkl")
-cluster_feature_columns = joblib.load("cluster_feature_columns.pkl")
+kmeans = joblib.load(resolve_file("kmeans_model.pkl"))
+scaler_cluster = joblib.load(resolve_file("cluster_scaler.pkl"))
+cluster_names = joblib.load(resolve_file("cluster_names.pkl"))
+cluster_feature_columns = joblib.load(resolve_file("cluster_feature_columns.pkl"))
 cfc_map = {name: i for i, name in enumerate(cluster_feature_columns)}
 
-ann_model = joblib.load("ann_model.pkl")
+ann_model = joblib.load(resolve_file("ann_model.pkl"))
 
 
 class CarInput(BaseModel):
@@ -45,15 +70,63 @@ def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 
-@app.get("/")
+# ---------------------------------------------------------------------------
+# 1. FRONTEND UI & STATIC ASSET ROUTES
+# ---------------------------------------------------------------------------
+@app.get("/", response_class=FileResponse)
+@app.get("/index.html", response_class=FileResponse)
+def serve_home():
+    index_file = resolve_file("index.html")
+    if os.path.exists(index_file):
+        return FileResponse(index_file, media_type="text/html")
+    return HTMLResponse("<h2>AutoPrice AI Frontend Not Found</h2>", status_code=404)
+
+
+@app.get("/car_brands_models.js")
+def serve_car_brands():
+    fpath = resolve_file("car_brands_models.js")
+    if os.path.exists(fpath):
+        return FileResponse(fpath, media_type="application/javascript")
+    raise HTTPException(status_code=404, detail="car_brands_models.js not found")
+
+
+@app.get("/car_model_data.js")
+def serve_car_model_data():
+    fpath = resolve_file("car_model_data.js")
+    if os.path.exists(fpath):
+        return FileResponse(fpath, media_type="application/javascript")
+    raise HTTPException(status_code=404, detail="car_model_data.js not found")
+
+
+@app.get("/car.glb")
+def serve_car_glb():
+    fpath = resolve_file("car.glb")
+    if os.path.exists(fpath):
+        return FileResponse(fpath, media_type="model/gltf-binary")
+    raise HTTPException(status_code=404, detail="car.glb not found")
+
+
+frontend_dir = os.path.join(BASE_DIR, "frontend")
+if os.path.exists(frontend_dir):
+    app.mount("/frontend", StaticFiles(directory=frontend_dir), name="frontend")
+
+
+# ---------------------------------------------------------------------------
+# 2. HEALTH CHECK & API STATUS
+# ---------------------------------------------------------------------------
 @app.get("/health")
-def home():
+@app.get("/api")
+@app.get("/api/health")
+def health():
     return {
         "status": "healthy",
         "message": "Used Car Price & Market Analysis API is running"
     }
 
 
+# ---------------------------------------------------------------------------
+# 3. MACHINE LEARNING VALUATION INFERENCE
+# ---------------------------------------------------------------------------
 @app.post("/analyze")
 @app.post("/api/analyze")
 def analyze_car(car: CarInput):
