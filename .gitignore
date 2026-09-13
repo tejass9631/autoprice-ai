@@ -1,4 +1,3 @@
-# Python caches
 __pycache__/
 *.py[cod]
 *$py.class
@@ -9,17 +8,14 @@ venv/
 ENV/
 .venv/
 
-# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 */.ipynb_checkpoints/*
 
-# Node & Package Managers
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment and IDE
 .env
 .env.local
 .vscode/

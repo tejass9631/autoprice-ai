@@ -8,18 +8,18 @@
   <meta name="description"
     content="Get an instant, accurate used car price estimate based on real market sales and vehicle condition.">
 
-  <!-- Typography: Plus Jakarta Sans & Space Grotesk -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet">
 
-  <!-- Material Symbols Icons -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     rel="stylesheet">
 
-  <!-- Tailwind CSS -->
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -58,22 +58,22 @@
     };
   </script>
 
-  <!-- Three.js, GLTFLoader and DRACOLoader from reliable CDNs -->
+  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
 
-  <!-- Local Base64 Car Model Bundle (Ensures 100% reliable local file:// execution) -->
+  
 
   <script src="car_model_data.js"></script>
 
-  <!-- Real Dataset Vehicle Brands and Models -->
+  
 
   <script src="car_brands_models.js"></script>
 
   <style>
-    /* Custom Scrollbar */
+    
 
     ::-webkit-scrollbar {
       width: 6px;
@@ -92,9 +92,7 @@
       background: #b86828;
     }
 
-
-    /* Luxury Warm Surfaces matching Porsche Dribbble Reference */
-
+    
 
     body {
       background-color: #ede7dc;
@@ -124,12 +122,12 @@
       box-shadow: 0 4px 16px rgba(184, 104, 40, 0.12);
     }
 
-    /* BMW M Motorsport Tricolor Stripe (Preserved as requested) */
+    
     .bmw-m-stripe {
       background: linear-gradient(90deg, #0066b1 0%, #0066b1 33.3%, #0c2340 33.3%, #0c2340 66.6%, #e21a22 66.6%, #e21a22 100%);
     }
 
-    /* Custom Dropdown Styling */
+    
     .dropdown-menu-panel {
       opacity: 0;
       visibility: hidden;
@@ -143,7 +141,7 @@
       transform: translateY(0);
     }
 
-    /* Precision Range Slider */
+    
     input[type=range] {
       -webkit-appearance: none;
       background: transparent;
@@ -179,24 +177,23 @@
 <body
   class="font-sans antialiased min-h-screen flex flex-col selection:bg-[#b86828] selection:text-white overflow-x-hidden">
 
-
-  <!-- 1. NAVIGATION BAR (PRESERVING BMW M-STYLE EMBLEM & TRICOLOR STRIPE) -->
+  
   <header class="sticky top-0 z-50 bg-[#ede6db]/95 backdrop-blur-md border-b border-[#d8ccbb] shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
 
-      <!-- Brand Logo with Authentic BMW M-Style Stripe & Roundel (Preserved as requested) -->
+      
       <div class="flex items-center gap-2.5 sm:gap-3.5">
         <div class="relative flex items-center gap-1.5 sm:gap-2">
-          <!-- BMW M Tricolor Bar -->
+          
           <div class="w-2 sm:w-2.5 h-7 sm:h-8 rounded-xs bmw-m-stripe shadow-sm"></div>
 
-          <!-- Roundel Logo Badge -->
+          
           <div
             class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#f6f2ea] border border-[#d2c4b0] p-1 flex items-center justify-center shadow-md">
             <svg viewBox="0 0 100 100" class="w-full h-full">
-              <!-- Outer Ring -->
+              
               <circle cx="50" cy="50" r="48" fill="#1c1916" stroke="#d2c4b0" stroke-width="2" />
-              <!-- BMW 4 Quadrants -->
+              
               <path d="M50 50 L50 4 A46 46 0 0 1 96 50 Z" fill="#0066b1" />
               <path d="M50 50 L96 50 A46 46 0 0 1 50 96 Z" fill="#ffffff" />
               <path d="M50 50 L50 96 A46 46 0 0 1 4 50 Z" fill="#0066b1" />
@@ -216,14 +213,14 @@
         </div>
       </div>
 
-      <!-- Desktop Navigation Links -->
+      
       <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-[#665a4a]">
         <a href="#showcase" class="text-[#1f1c19] hover:text-[#b86828] transition-colors">Showroom</a>
         <a href="#valuation" class="hover:text-[#b86828] transition-colors">Price Calculator</a>
         <a href="#segments" class="hover:text-[#b86828] transition-colors">Market Tiers</a>
       </nav>
 
-      <!-- Right Side: Badge & Mobile Menu Button -->
+      
       <div class="flex items-center gap-2 sm:gap-3">
         <div
           class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-[#f2ebd9] border border-[#d6c7b2] text-[#4a4237] text-[11px] sm:text-xs font-semibold">
@@ -232,7 +229,7 @@
           <span class="sm:hidden">Live</span>
         </div>
 
-        <!-- Mobile Menu Toggle Button -->
+        
         <button type="button" id="mobile-menu-toggle" onclick="toggleMobileMenu()"
           class="md:hidden w-8 h-8 rounded-xl bg-[#ede4d4] border border-[#d4c5af] text-[#1c1916] flex items-center justify-center transition-colors hover:border-[#b86828]"
           aria-label="Toggle Navigation Menu">
@@ -242,7 +239,7 @@
 
     </div>
 
-    <!-- Mobile Collapsible Nav Drawer -->
+    
     <div id="mobile-nav-menu" class="hidden md:hidden border-t border-[#d8ccbb] bg-[#ede6db] px-4 py-3 space-y-1">
       <a href="#showcase" onclick="toggleMobileMenu()"
         class="block py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider text-[#1c1916] hover:bg-[#dfd3c0] transition-colors">Showroom</a>
@@ -253,24 +250,24 @@
     </div>
   </header>
 
-  <!-- MAIN CONTAINER -->
+  
   <main class="relative z-10 flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
 
-    <!-- 2. LUXURY 3D SHOWCASE (DIRECTLY MATCHING PORSCHE DRIBBBLE DESIGN - TAYCAN HEADER REMOVED) -->
+    
     <section id="showcase" class="rounded-3xl studio-card p-4 sm:p-6 lg:p-8 relative overflow-hidden shadow-2xl">
 
-      <!-- 3D Studio Stage with Dribbble Porsche Luxury Warm Atmosphere -->
+      
       <div
         class="relative w-full h-[350px] sm:h-[480px] lg:h-[560px] rounded-2xl overflow-hidden border border-[#d6c7b2] flex items-center justify-center"
         style="background: linear-gradient(55deg, #d2d7de 0%, #ece6dc 36%, #caa065 44%, #b87b38 54%, #cca368 62%, #eee7db 70%, #e3dbcd 100%);">
 
-        <!-- Subtle Vintage Watermark "1934" from Reference Image -->
+        
         <div
           class="absolute left-4 sm:left-10 top-4 sm:top-10 font-mono font-black text-7xl sm:text-9xl lg:text-[160px] text-[#1c1916]/[0.04] select-none pointer-events-none tracking-tighter leading-none">
           1934
         </div>
 
-        <!-- Left Specs Bullet Points (Direct from Reference Image) -->
+        
         <div
           class="absolute left-6 sm:left-10 bottom-8 sm:bottom-10 z-20 hidden sm:flex flex-col gap-2.5 text-xs font-bold text-[#443b30] pointer-events-none">
           <div class="flex items-center gap-2">
@@ -287,7 +284,7 @@
           </div>
         </div>
 
-        <!-- Left / Right Interactive Nudge Controls -->
+        
         <button type="button" onclick="nudgeCarTurntable(-0.4)" title="Rotate Left"
           class="absolute left-2.5 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#1c1916]/10 hover:bg-[#1c1916]/20 active:bg-[#1c1916]/30 backdrop-blur-md border border-[#1c1916]/15 text-[#1c1916] flex items-center justify-center transition-all shadow-md cursor-pointer">
           <span class="material-symbols-outlined text-[18px] sm:text-[20px]">chevron_left</span>
@@ -297,10 +294,10 @@
           <span class="material-symbols-outlined text-[18px] sm:text-[20px]">chevron_right</span>
         </button>
 
-        <!-- 3D Canvas -->
+        
         <canvas id="car-3d-canvas" class="w-full h-full cursor-grab active:cursor-grabbing outline-none block"></canvas>
 
-        <!-- Bottom Curved Arc Design Element (Direct from Reference Image) -->
+        
         <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center pointer-events-none">
           <div class="relative w-44 h-8 flex items-center justify-center">
             <svg viewBox="0 0 200 40" class="w-full h-full overflow-visible">
@@ -316,7 +313,7 @@
           <span class="text-[10px] text-[#6b5d4b] font-medium">Interactive 360° Inspection</span>
         </div>
 
-        <!-- Loading Spinner -->
+        
         <div id="car-loading-overlay"
           class="absolute inset-0 z-30 bg-[#ede7dc] flex flex-col items-center justify-center gap-3 transition-opacity duration-500 pointer-events-none">
           <div class="w-8 h-8 border-2 border-[#b86828] border-t-transparent rounded-full animate-spin"></div>
@@ -327,11 +324,11 @@
 
     </section>
 
-    <!-- 3. USER-FRIENDLY VALUATION FORM -->
+    
     <section id="valuation"
       class="rounded-2xl sm:rounded-3xl studio-card p-4 sm:p-8 lg:p-10 relative overflow-hidden shadow-2xl space-y-6 sm:space-y-8">
 
-      <!-- Cockpit Header -->
+      
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[#d8ccbb]">
         <div>
           <h2 class="text-2xl sm:text-3xl font-black text-[#1c1916] tracking-tight">
@@ -349,7 +346,7 @@
         </div>
       </div>
 
-      <!-- IN-PAGE ERROR BANNER -->
+      
       <div id="valuation-error-banner"
         class="hidden p-4 rounded-2xl bg-red-100/90 border border-red-300 text-red-900 text-xs flex items-center justify-between gap-3 shadow-sm">
         <div class="flex items-center gap-2.5">
@@ -360,13 +357,13 @@
           class="text-red-700 hover:text-red-950 text-xs font-bold px-2.5 py-1 rounded-lg bg-red-200/60 transition-colors flex-shrink-0">Dismiss</button>
       </div>
 
-      <!-- FORM GRID -->
+      
       <form id="valuation-form" onsubmit="return false;" class="space-y-5 sm:space-y-6">
 
-        <!-- VEHICLE IDENTITY: BRAND & MODEL -->
+        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 relative z-30">
 
-          <!-- 1. VEHICLE BRAND -->
+          
           <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl relative">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Vehicle Brand
@@ -390,12 +387,12 @@
                   class="material-symbols-outlined absolute left-2.5 top-2.5 sm:top-2 text-[#8a7f72] text-[16px] pointer-events-none">search</span>
               </div>
               <div id="brand-list-container" class="max-h-52 sm:max-h-56 overflow-y-auto space-y-0.5 pr-1">
-                <!-- Populated dynamically via JS -->
+                
               </div>
             </div>
           </div>
 
-          <!-- 2. VEHICLE MODEL (DEPENDENT ON BRAND) -->
+          
           <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl relative">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Vehicle Model
@@ -420,17 +417,17 @@
                   class="material-symbols-outlined absolute left-2.5 top-2.5 sm:top-2 text-[#8a7f72] text-[16px] pointer-events-none">search</span>
               </div>
               <div id="model-list-container" class="max-h-52 sm:max-h-56 overflow-y-auto space-y-0.5 pr-1">
-                <!-- Populated dynamically via JS -->
+                
               </div>
             </div>
           </div>
 
         </div>
 
-        <!-- VEHICLE SPECIFICATIONS GRID (6 ATTRIBUTES) -->
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 relative z-20">
 
-          <!-- 3. MANUFACTURE YEAR -->
+          
           <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl">
             <div class="flex items-center justify-between">
               <label for="car-year" class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
@@ -445,7 +442,7 @@
             <input type="range" id="car-year" min="1995" max="2024" value="2015" class="w-full mt-3"
               oninput="syncYearInput(this.value)">
 
-            <!-- Quick Year Chips (Responsive Grid Layout) -->
+            
             <div class="grid grid-cols-5 gap-1 sm:gap-1.5 pt-2">
               <button type="button" onclick="setYearQuick(2012, this)"
                 class="year-chip py-1.5 text-center rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[10px] sm:text-[11px] font-mono text-[#5c5347] transition-colors">2012</button>
@@ -462,7 +459,7 @@
               2024</span>
           </div>
 
-          <!-- 4. KILOMETERS DRIVEN -->
+          
           <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl">
             <div class="flex items-center justify-between">
               <label for="car-km" class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
@@ -477,7 +474,7 @@
             <input type="range" id="car-km" min="0" max="250000" step="1000" value="50000" class="w-full mt-3"
               oninput="syncKmInput(this.value)">
 
-            <!-- Quick KM Chips (Responsive Grid Layout) -->
+            
             <div class="grid grid-cols-5 gap-1 sm:gap-1.5 pt-2">
               <button type="button" onclick="setKmQuick(15000, this)"
                 class="km-chip py-1.5 text-center rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[10px] sm:text-[11px] font-mono text-[#5c5347] transition-colors">15k</button>
@@ -494,7 +491,7 @@
               reading</span>
           </div>
 
-          <!-- 5. FUEL TYPE -->
+          
           <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl relative">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Fuel Type
@@ -545,7 +542,7 @@
             </div>
           </div>
 
-          <!-- 6. SELLER TYPE -->
+          
           <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl relative">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Seller Type
@@ -588,7 +585,7 @@
             </div>
           </div>
 
-          <!-- 7. TRANSMISSION (DUAL SWITCH) -->
+          
           <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Transmission
@@ -607,7 +604,7 @@
             <input type="hidden" id="car-transmission" name="transmission" value="Manual">
           </div>
 
-          <!-- 8. OWNER HISTORY -->
+          
           <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl relative">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Ownership History
@@ -668,14 +665,14 @@
 
         </div>
 
-        <!-- ACTION BUTTON BAR -->
+        
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-[#d8ccbb]">
           <div class="text-xs text-[#665b4c] flex items-center gap-2 font-medium">
             <span class="w-2 h-2 rounded-full bg-[#b86828]"></span>
             <span>Real-time market price analysis</span>
           </div>
 
-          <!-- COGNAC LEATHER BUTTON MATCHING DRIBBBLE REFERENCE (FULL WIDTH ON MOBILE) -->
+          
           <button id="predict-btn" onclick="handleEstimateSubmit()" type="button"
             class="w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-[#b86828] to-[#9e541b] hover:from-[#c7722d] hover:to-[#ac5d20] active:from-[#944e18] text-white font-black text-sm tracking-wide shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed">
             <span class="material-symbols-outlined text-[18px]">calculate</span>
@@ -689,10 +686,10 @@
 
     </section>
 
-    <!-- 4. VALUATION RESULT HUD CARD (CLEAN CONSUMER-FRIENDLY VIEW) -->
+    
     <section id="result-container">
 
-      <!-- Initial Empty State -->
+      
       <div id="empty-state" class="rounded-2xl sm:rounded-3xl studio-card p-6 sm:p-8 text-center border-dashed border border-[#d2c3ae]">
         <div
           class="w-12 h-12 rounded-2xl bg-[#ede3d3] border border-[#d4c5af] text-[#b86828] mx-auto flex items-center justify-center mb-3">
@@ -704,16 +701,16 @@
         </p>
       </div>
 
-      <!-- Revealed Result Card -->
+      
       <div id="result-card"
         class="hidden rounded-2xl sm:rounded-3xl studio-card p-5 sm:p-8 lg:p-10 relative overflow-hidden transition-all border border-[#d8ccbb]">
 
-        <!-- Top BMW M Tricolor Accent Bar -->
+        
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0066b1] via-[#0c2340] to-[#e21a22]"></div>
 
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 sm:gap-8 relative z-10 pt-2">
 
-          <!-- Price Metric -->
+          
           <div class="space-y-1.5">
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-[#b86828]"></span>
@@ -732,7 +729,7 @@
             </p>
           </div>
 
-          <!-- Market Category Card -->
+          
           <div class="flex items-center w-full sm:w-auto sm:min-w-[240px]">
             <div class="w-full bg-[#ede3d3]/85 p-4 rounded-2xl border border-[#d4c5af] flex flex-col justify-between">
               <span class="text-xs text-[#7a6f60] font-medium">Market Category</span>
@@ -746,7 +743,7 @@
 
         </div>
 
-        <!-- Spec Summary Line & Position Bar -->
+        
         <div
           class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-[#d8ccbb] flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
           <div class="text-xs text-[#52483a] font-medium leading-relaxed">
@@ -768,7 +765,7 @@
 
     </section>
 
-    <!-- 5. MARKET CATEGORY TIERS -->
+    
     <section id="segments" class="rounded-2xl sm:rounded-3xl studio-card p-4 sm:p-8 lg:p-10 space-y-5 sm:space-y-6 shadow-2xl">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#d8ccbb] pb-4">
         <div>
@@ -784,7 +781,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
 
-        <!-- Budget Tier -->
+        
         <div
           class="bg-[#ede3d3]/85 border border-[#d4c5af] rounded-xl sm:rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-[#b86828] transition-colors">
           <div>
@@ -805,7 +802,7 @@
           </div>
         </div>
 
-        <!-- Mid-Range Tier (Highlighted) -->
+        
         <div
           class="bg-[#fdfaf5] border-2 border-[#b86828] rounded-xl sm:rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg transition-colors">
           <div>
@@ -825,7 +822,7 @@
           </div>
         </div>
 
-        <!-- Premium Tier -->
+        
         <div
           class="bg-[#ede3d3]/85 border border-[#d4c5af] rounded-xl sm:rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-[#b86828] transition-colors">
           <div>
@@ -851,7 +848,7 @@
 
   </main>
 
-  <!-- 6. FOOTER -->
+  
   <footer class="w-full bg-[#e4dac9] border-t border-[#d0c0ab] py-6 mt-16 relative z-10">
     <div
       class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#665b4c]">
@@ -866,13 +863,10 @@
     </div>
   </footer>
 
-  <!-- ========================================================= -->
-  <!-- JAVASCRIPT: CINEMATIC 3D CAR TURNTABLE & ML INFERENCE -->
-  <!-- ========================================================= -->
+  
+  
+  
   <script>
-    // ---------------------------------------------------------
-    // 1. THREE.JS REAL CAR 3D STUDIO (VINTAGE METALLIC BRONZE)
-    // ---------------------------------------------------------
     let scene, camera, renderer;
     let carRoot;
     let isDragging = false;
@@ -888,15 +882,12 @@
       const width = container.clientWidth;
       const height = container.clientHeight;
 
-      // 1. Scene with Warm Studio Luxury Atmosphere
       scene = new THREE.Scene();
 
-      // 2. Camera Framing (Commanding front-three-quarter eye-level profile)
       camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 100);
       camera.position.set(2.4, 0.92, 3.6);
       camera.lookAt(0, 0.30, 0);
 
-      // 3. Renderer with Soft Shadows & Transparent Background
       renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         antialias: true,
@@ -909,22 +900,16 @@
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-      // 4. Warm Studio Lighting matching Dribbble Porsche Artwork
       setupLighting();
 
-      // 5. Studio Platform Floor with Luminous Turntable Ring
       setupStudioFloor();
 
-      // 6. Load 3D Car with Vintage Metallic Champagne Bronze Finish (Matching Dribbble image)
       loadReal3DCarModel();
 
-      // 7. Mouse/Touch Orbit
       setupInteractions(canvas);
 
-      // 8. Continuous Animation Loop
       animate();
 
-      // 9. Resize Handling
       window.addEventListener('resize', onWindowResize);
     }
 
@@ -940,11 +925,9 @@
     }
 
     function setupLighting() {
-      // Warm Studio Ambient
       const ambientLight = new THREE.AmbientLight(0xfff5ea, 0.95);
       scene.add(ambientLight);
 
-      // Overhead Center Spotlight (Warm champagne highlight)
       const topSpot = new THREE.SpotLight(0xfffae6, 2.0, 25, Math.PI / 3, 0.8, 1);
       topSpot.position.set(0, 7.5, 1);
       topSpot.castShadow = true;
@@ -953,24 +936,20 @@
       topSpot.shadow.bias = -0.0006;
       scene.add(topSpot);
 
-      // Front-Right Key Light
       const keyLight = new THREE.DirectionalLight(0xfff7ed, 1.4);
       keyLight.position.set(2.5, 5, 5);
       scene.add(keyLight);
 
-      // Front-Left Fill Light (Illuminating headlights and front bumper)
       const frontFill = new THREE.DirectionalLight(0xffeedd, 1.1);
       frontFill.position.set(-3.5, 2.8, 4);
       scene.add(frontFill);
 
-      // Rear Specular Rim Light (Outlining roof and rear silhouette)
       const rimLight = new THREE.DirectionalLight(0xf5e2cb, 0.9);
       rimLight.position.set(4, 3, -3.5);
       scene.add(rimLight);
     }
 
     function setupStudioFloor() {
-      // Crisp Champagne Gold Turntable Ring (Matching luxury camel theme)
       const ringGeo = new THREE.RingGeometry(3.32, 3.35, 128);
       const ringMat = new THREE.MeshBasicMaterial({
         color: 0xb88e55,
@@ -983,7 +962,6 @@
       ring.position.y = 0.002;
       scene.add(ring);
 
-      // Subtle Outer Halo Ring
       const outerRingGeo = new THREE.RingGeometry(3.29, 3.38, 128);
       const outerRingMat = new THREE.MeshBasicMaterial({
         color: 0xd4a568,
@@ -996,7 +974,6 @@
       outerRing.position.y = 0.001;
       scene.add(outerRing);
 
-      // Soft Ground Contact Shadow Under Wheels
       const shadowGeo = new THREE.PlaneGeometry(10, 10);
       const shadowMat = new THREE.ShadowMaterial({ opacity: 0.30 });
       const shadowPlane = new THREE.Mesh(shadowGeo, shadowMat);
@@ -1012,7 +989,6 @@
       dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.4.3/');
       loader.setDRACOLoader(dracoLoader);
 
-      // Deep Gloss Obsidian Metallic Black
       const carPaint = new THREE.MeshPhysicalMaterial({
         color: 0x121417,
         metalness: 0.88,
@@ -1022,42 +998,36 @@
         reflectivity: 0.98
       });
 
-      // Global helper to switch car color if ever needed
       window.setCarColor = function (hex) {
         if (carPaint) {
           carPaint.color.set(hex);
         }
       };
 
-      // Wheel Rim Material: Anodized Two-Tone Silver/Dark Grey
       const rimMaterial = new THREE.MeshStandardMaterial({
         color: 0xdde4ed,
         metalness: 0.95,
         roughness: 0.12
       });
 
-      // Tires: Dark Rubber
       const tireMaterial = new THREE.MeshStandardMaterial({
         color: 0x16181d,
         roughness: 0.88,
         metalness: 0.05
       });
 
-      // Sport Gold Brake Calipers
       const yellowCaliper = new THREE.MeshStandardMaterial({
         color: 0xd49b28,
         roughness: 0.3,
         metalness: 0.6
       });
 
-      // Interior / Engine / Grille / Exhaust / Trims: Dark Matte Charcoal
       const darkTrimMaterial = new THREE.MeshStandardMaterial({
         color: 0x181512,
         roughness: 0.8,
         metalness: 0.15
       });
 
-      // Smoked Aerodynamic Glass
       const smokedGlass = new THREE.MeshPhysicalMaterial({
         color: 0x181a20,
         metalness: 0.1,
@@ -1067,7 +1037,6 @@
         opacity: 0.85
       });
 
-      // Luminous Headlights
       const headlightGlow = new THREE.MeshStandardMaterial({
         color: 0xffffff,
         emissive: 0xffeedb,
@@ -1076,7 +1045,6 @@
         metalness: 0.2
       });
 
-      // Taillights Red
       const taillightRed = new THREE.MeshStandardMaterial({
         color: 0xee1122,
         emissive: 0xaa0814,
@@ -1119,7 +1087,6 @@
               }
             });
 
-            // Center and scale car
             const box = new THREE.Box3().setFromObject(carRoot);
             const center = box.getCenter(new THREE.Vector3());
             const size = box.getSize(new THREE.Vector3());
@@ -1128,7 +1095,6 @@
             const scale = 3.6 / maxDim;
             carRoot.scale.setScalar(scale);
 
-            // Ground the car and center it perfectly
             box.setFromObject(carRoot);
             carRoot.position.x = -center.x * scale;
             carRoot.position.y = -box.min.y;
@@ -1150,7 +1116,6 @@
         );
       }
 
-      // Check bundled Base64 first (100% reliable for local file://)
       if (window.CAR_MODEL_BASE64) {
         try {
           const binaryString = atob(window.CAR_MODEL_BASE64);
@@ -1166,7 +1131,6 @@
         }
       }
 
-      // Fallback to fetch car.glb
       fetch('car.glb')
         .then(res => res.arrayBuffer())
         .then(buffer => parseModelData(buffer))
@@ -1200,7 +1164,6 @@
         previousMousePosition = { x: e.clientX, y: e.clientY };
       });
 
-      // Touch controls
       canvas.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
           isDragging = true;
@@ -1227,12 +1190,10 @@
     function animate() {
       requestAnimationFrame(animate);
 
-      // Continuous smooth turntable rotation
       if (!isDragging) {
         targetRotationY += 0.0035;
       }
 
-      // Smooth camera interpolation
       currentRotationY += (targetRotationY - currentRotationY) * 0.06;
       currentRotationX += (targetRotationX - currentRotationX) * 0.06;
 
@@ -1247,9 +1208,6 @@
       renderer.render(scene, camera);
     }
 
-    // ---------------------------------------------------------
-    // 2. DEPENDENT VEHICLE BRAND & MODEL SELECT (FROM DATASET)
-    // ---------------------------------------------------------
     function initBrandAndModelSelect() {
       if (!window.CAR_BRANDS_MODELS) {
         console.warn('CAR_BRANDS_MODELS dataset not found');
@@ -1304,10 +1262,8 @@
       document.getElementById('car-brand').value = brand;
       document.getElementById('brand-selected-text').innerText = brand;
 
-      // Populate models for this brand
       const models = window.CAR_BRANDS_MODELS[brand] || [];
 
-      // Determine initial model selection
       let selectedModel = models[0] || '';
       if (preferredModel && models.includes(preferredModel)) {
         selectedModel = preferredModel;
@@ -1373,9 +1329,6 @@
       populateModelList(val);
     }
 
-    // ---------------------------------------------------------
-    // 3. REFINED CUSTOM DROPDOWNS & FORM SYNC
-    // ---------------------------------------------------------
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-nav-menu');
       const icon = document.getElementById('mobile-menu-icon');
@@ -1539,9 +1492,6 @@
       syncKmInput(val);
     }
 
-    // ---------------------------------------------------------
-    // 4. FASTAPI ML INFERENCE SUBMISSION (POST /analyze)
-    // ---------------------------------------------------------
     async function handleEstimateSubmit() {
       const brand = document.getElementById('car-brand').value;
       const model = document.getElementById('car-model').value;
@@ -1603,7 +1553,6 @@
           owner: owner
         };
 
-        // Candidate endpoints: works on fullstack production, local dev, or GitHub Pages
         const isLocalDev = window.location.protocol === 'file:' || 
                            (window.location.hostname === 'localhost' && window.location.port !== '') ||
                            (window.location.hostname === '127.0.0.1' && window.location.port !== '');
@@ -1633,12 +1582,10 @@
                 break;
               }
             } catch (fetchErr) {
-              // Try next candidate endpoint
             }
           }
         }
 
-        // Resilient fallback: instant high-precision client engine on GitHub Pages or offline
         if (!data) {
           data = calculateClientValuation(payload);
         }
@@ -1647,14 +1594,11 @@
         const resultCard = document.getElementById('result-card');
         resultCard.classList.remove('hidden');
 
-        // Roll Price Odometer for predicted_price
         animatePriceCounter(data.predicted_price);
 
-        // Populate Segment
         const segEl = document.getElementById('res-segment');
         if (segEl) segEl.innerText = data.market_segment;
 
-        // Position Gauge & Badging
         const dot = document.getElementById('segment-badge-dot');
         const gaugeFill = document.getElementById('market-gauge-fill');
         const gaugeLabel = document.getElementById('market-gauge-label');
@@ -1691,7 +1635,6 @@
           }
         }
 
-        // Vehicle summary line with all 8 features
         const summaryLine = document.getElementById('vehicle-summary-line');
         if (summaryLine) {
           summaryLine.innerText =
@@ -1719,7 +1662,6 @@
     }
 
     function calculateClientValuation(car) {
-      // Benchmark brand valuations from Indian automobile market dataset
       const luxuryBrands = ['BMW', 'Mercedes-Benz', 'Audi', 'Jaguar', 'Land Rover', 'Porsche', 'Volvo', 'Lexus'];
       const midBrands = ['Toyota', 'Skoda', 'Volkswagen', 'Jeep', 'MG', 'Kia', 'Honda', 'Hyundai'];
       
@@ -1734,25 +1676,20 @@
         basePrice = 950000;
       }
 
-      // Age depreciation (compounded annually)
       const currentYear = 2026;
       const age = Math.max(0, currentYear - car.year);
       const ageFactor = Math.max(0.20, Math.pow(0.91, age));
 
-      // Mileage depreciation
       const km = Math.max(0, car.km_driven || 0);
       const kmFactor = Math.max(0.65, 1 - (km / 350000));
 
-      // Transmission
       const transFactor = (car.transmission === 'Automatic') ? 1.15 : 1.0;
 
-      // Fuel type factor
       let fuelFactor = 1.0;
       if (car.fuel === 'Diesel') fuelFactor = 1.07;
       else if (car.fuel === 'Electric') fuelFactor = 1.12;
       else if (car.fuel === 'CNG' || car.fuel === 'LPG') fuelFactor = 0.94;
 
-      // Ownership factor
       let ownerFactor = 1.0;
       if (car.owner === 'Second Owner') ownerFactor = 0.88;
       else if (car.owner === 'Third Owner') ownerFactor = 0.77;
