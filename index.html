@@ -181,21 +181,18 @@
 
 
   <!-- 1. NAVIGATION BAR (PRESERVING BMW M-STYLE EMBLEM & TRICOLOR STRIPE) -->
-
-  <header class="sticky top-0 z-50 bg-[#ede6db]/90 backdrop-blur-md border-b border-[#d8ccbb] shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+  <header class="sticky top-0 z-50 bg-[#ede6db]/95 backdrop-blur-md border-b border-[#d8ccbb] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
 
       <!-- Brand Logo with Authentic BMW M-Style Stripe & Roundel (Preserved as requested) -->
-
-      <div class="flex items-center gap-3.5">
-        <div class="relative flex items-center gap-2">
+      <div class="flex items-center gap-2.5 sm:gap-3.5">
+        <div class="relative flex items-center gap-1.5 sm:gap-2">
           <!-- BMW M Tricolor Bar -->
-
-          <div class="w-2.5 h-8 rounded-xs bmw-m-stripe shadow-sm"></div>
+          <div class="w-2 sm:w-2.5 h-7 sm:h-8 rounded-xs bmw-m-stripe shadow-sm"></div>
 
           <!-- Roundel Logo Badge -->
           <div
-            class="w-9 h-9 rounded-full bg-[#f6f2ea] border border-[#d2c4b0] p-1 flex items-center justify-center shadow-md">
+            class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#f6f2ea] border border-[#d2c4b0] p-1 flex items-center justify-center shadow-md">
             <svg viewBox="0 0 100 100" class="w-full h-full">
               <!-- Outer Ring -->
               <circle cx="50" cy="50" r="48" fill="#1c1916" stroke="#d2c4b0" stroke-width="2" />
@@ -210,29 +207,49 @@
         </div>
 
         <div>
-          <div class="flex items-center gap-2">
-            <span class="font-black text-lg tracking-tight text-[#1f1c19] font-sans">AutoPrice</span>
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="font-black text-base sm:text-lg tracking-tight text-[#1f1c19] font-sans">AutoPrice</span>
             <span
-              class="text-[10px] font-bold px-2 py-0.5 rounded bg-[#e4d9c7] border border-[#cfbeaa] text-[#6b5f4f] tracking-widest uppercase">STUDIO</span>
+              class="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded bg-[#e4d9c7] border border-[#cfbeaa] text-[#6b5f4f] tracking-widest uppercase">STUDIO</span>
           </div>
-          <p class="text-[11px] text-[#7a6f60] font-medium">Used Car Valuation Platform</p>
+          <p class="text-[10px] sm:text-[11px] text-[#7a6f60] font-medium hidden sm:block">Used Car Valuation Platform</p>
         </div>
       </div>
 
-      <!-- Navigation Links -->
+      <!-- Desktop Navigation Links -->
       <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-[#665a4a]">
         <a href="#showcase" class="text-[#1f1c19] hover:text-[#b86828] transition-colors">Showroom</a>
         <a href="#valuation" class="hover:text-[#b86828] transition-colors">Price Calculator</a>
         <a href="#segments" class="hover:text-[#b86828] transition-colors">Market Tiers</a>
       </nav>
 
-      <!-- Live Market Rates Badge -->
-      <div
-        class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f2ebd9] border border-[#d6c7b2] text-[#4a4237] text-xs font-semibold">
-        <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-        <span>Live Market Rates</span>
+      <!-- Right Side: Badge & Mobile Menu Button -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div
+          class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-[#f2ebd9] border border-[#d6c7b2] text-[#4a4237] text-[11px] sm:text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+          <span class="hidden sm:inline">Live Market Rates</span>
+          <span class="sm:hidden">Live</span>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" id="mobile-menu-toggle" onclick="toggleMobileMenu()"
+          class="md:hidden w-8 h-8 rounded-xl bg-[#ede4d4] border border-[#d4c5af] text-[#1c1916] flex items-center justify-center transition-colors hover:border-[#b86828]"
+          aria-label="Toggle Navigation Menu">
+          <span class="material-symbols-outlined text-[18px]" id="mobile-menu-icon">menu</span>
+        </button>
       </div>
 
+    </div>
+
+    <!-- Mobile Collapsible Nav Drawer -->
+    <div id="mobile-nav-menu" class="hidden md:hidden border-t border-[#d8ccbb] bg-[#ede6db] px-4 py-3 space-y-1">
+      <a href="#showcase" onclick="toggleMobileMenu()"
+        class="block py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider text-[#1c1916] hover:bg-[#dfd3c0] transition-colors">Showroom</a>
+      <a href="#valuation" onclick="toggleMobileMenu()"
+        class="block py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider text-[#1c1916] hover:bg-[#dfd3c0] transition-colors">Price Calculator</a>
+      <a href="#segments" onclick="toggleMobileMenu()"
+        class="block py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider text-[#1c1916] hover:bg-[#dfd3c0] transition-colors">Market Tiers</a>
     </div>
   </header>
 
@@ -244,12 +261,12 @@
 
       <!-- 3D Studio Stage with Dribbble Porsche Luxury Warm Atmosphere -->
       <div
-        class="relative w-full h-[440px] sm:h-[500px] lg:h-[560px] rounded-2xl overflow-hidden border border-[#d6c7b2] flex items-center justify-center"
+        class="relative w-full h-[350px] sm:h-[480px] lg:h-[560px] rounded-2xl overflow-hidden border border-[#d6c7b2] flex items-center justify-center"
         style="background: linear-gradient(55deg, #d2d7de 0%, #ece6dc 36%, #caa065 44%, #b87b38 54%, #cca368 62%, #eee7db 70%, #e3dbcd 100%);">
 
         <!-- Subtle Vintage Watermark "1934" from Reference Image -->
         <div
-          class="absolute left-6 sm:left-10 top-6 sm:top-10 font-mono font-black text-8xl sm:text-9xl lg:text-[160px] text-[#1c1916]/[0.04] select-none pointer-events-none tracking-tighter leading-none">
+          class="absolute left-4 sm:left-10 top-4 sm:top-10 font-mono font-black text-7xl sm:text-9xl lg:text-[160px] text-[#1c1916]/[0.04] select-none pointer-events-none tracking-tighter leading-none">
           1934
         </div>
 
@@ -272,12 +289,12 @@
 
         <!-- Left / Right Interactive Nudge Controls -->
         <button type="button" onclick="nudgeCarTurntable(-0.4)" title="Rotate Left"
-          class="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#1c1916]/10 hover:bg-[#1c1916]/20 active:bg-[#1c1916]/30 backdrop-blur-md border border-[#1c1916]/15 text-[#1c1916] flex items-center justify-center transition-all shadow-md cursor-pointer">
-          <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+          class="absolute left-2.5 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#1c1916]/10 hover:bg-[#1c1916]/20 active:bg-[#1c1916]/30 backdrop-blur-md border border-[#1c1916]/15 text-[#1c1916] flex items-center justify-center transition-all shadow-md cursor-pointer">
+          <span class="material-symbols-outlined text-[18px] sm:text-[20px]">chevron_left</span>
         </button>
         <button type="button" onclick="nudgeCarTurntable(0.4)" title="Rotate Right"
-          class="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#1c1916]/10 hover:bg-[#1c1916]/20 active:bg-[#1c1916]/30 backdrop-blur-md border border-[#1c1916]/15 text-[#1c1916] flex items-center justify-center transition-all shadow-md cursor-pointer">
-          <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+          class="absolute right-2.5 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#1c1916]/10 hover:bg-[#1c1916]/20 active:bg-[#1c1916]/30 backdrop-blur-md border border-[#1c1916]/15 text-[#1c1916] flex items-center justify-center transition-all shadow-md cursor-pointer">
+          <span class="material-symbols-outlined text-[18px] sm:text-[20px]">chevron_right</span>
         </button>
 
         <!-- 3D Canvas -->
@@ -312,7 +329,7 @@
 
     <!-- 3. USER-FRIENDLY VALUATION FORM -->
     <section id="valuation"
-      class="rounded-3xl studio-card p-6 sm:p-8 lg:p-10 relative overflow-hidden shadow-2xl space-y-8">
+      class="rounded-2xl sm:rounded-3xl studio-card p-4 sm:p-8 lg:p-10 relative overflow-hidden shadow-2xl space-y-6 sm:space-y-8">
 
       <!-- Cockpit Header -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[#d8ccbb]">
@@ -326,7 +343,7 @@
         </div>
 
         <div
-          class="text-xs text-[#52483a] flex items-center gap-2 bg-[#ece3d3] px-4 py-2 rounded-full border border-[#d6c7b2] font-semibold w-fit">
+          class="text-xs text-[#52483a] flex items-center gap-2 bg-[#ece3d3] px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#d6c7b2] font-semibold w-fit">
           <span class="material-symbols-outlined text-[16px] text-emerald-600">check_circle</span>
           <span>Instant Valuation</span>
         </div>
@@ -344,19 +361,19 @@
       </div>
 
       <!-- FORM GRID -->
-      <form id="valuation-form" onsubmit="return false;" class="space-y-6">
+      <form id="valuation-form" onsubmit="return false;" class="space-y-5 sm:space-y-6">
 
         <!-- VEHICLE IDENTITY: BRAND & MODEL -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-30">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 relative z-30">
 
           <!-- 1. VEHICLE BRAND -->
-          <div class="flex flex-col gap-2 studio-panel p-5 rounded-2xl relative">
+          <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl relative">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Vehicle Brand
             </label>
 
             <button type="button" id="brand-select-trigger" onclick="toggleDropdown('brand-dropdown')"
-              class="mt-2 w-full h-12 px-4 rounded-xl bg-[#fdfaf5] border border-[#d4c5af] hover:border-[#b86828] flex items-center justify-between text-left transition-all shadow-sm">
+              class="mt-1.5 sm:mt-2 w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-[#fdfaf5] border border-[#d4c5af] hover:border-[#b86828] flex items-center justify-between text-left transition-all shadow-sm">
               <span id="brand-selected-text" class="text-sm font-semibold text-[#1c1916]">Maruti</span>
               <span class="material-symbols-outlined text-[#7a6f60] text-[18px] transition-transform"
                 id="brand-chevron">expand_more</span>
@@ -364,28 +381,28 @@
             <input type="hidden" id="car-brand" name="brand" value="Maruti">
 
             <div id="brand-dropdown"
-              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-50 p-2.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-2">
+              class="dropdown-menu-panel absolute top-[92px] sm:top-[98px] left-2 right-2 sm:left-4 sm:right-4 z-50 p-2 sm:p-2.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-2">
               <div class="relative">
                 <input type="text" id="brand-search-input" placeholder="Search brand (e.g. Maruti, Hyundai)..."
-                  class="w-full h-9 px-3 pl-8 rounded-lg bg-[#f4ede2] border border-[#d4c5af] text-xs text-[#1c1916] placeholder-[#8a7f72] focus:outline-none focus:border-[#b86828]"
+                  class="w-full h-10 sm:h-9 px-3 pl-8 rounded-lg bg-[#f4ede2] border border-[#d4c5af] text-sm sm:text-xs text-[#1c1916] placeholder-[#8a7f72] focus:outline-none focus:border-[#b86828]"
                   oninput="filterBrands(this.value)" onclick="event.stopPropagation()">
                 <span
-                  class="material-symbols-outlined absolute left-2.5 top-2 text-[#8a7f72] text-[16px] pointer-events-none">search</span>
+                  class="material-symbols-outlined absolute left-2.5 top-2.5 sm:top-2 text-[#8a7f72] text-[16px] pointer-events-none">search</span>
               </div>
-              <div id="brand-list-container" class="max-h-56 overflow-y-auto space-y-0.5 pr-1">
+              <div id="brand-list-container" class="max-h-52 sm:max-h-56 overflow-y-auto space-y-0.5 pr-1">
                 <!-- Populated dynamically via JS -->
               </div>
             </div>
           </div>
 
           <!-- 2. VEHICLE MODEL (DEPENDENT ON BRAND) -->
-          <div class="flex flex-col gap-2 studio-panel p-5 rounded-2xl relative">
+          <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl relative">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Vehicle Model
             </label>
 
             <button type="button" id="model-select-trigger" onclick="toggleDropdown('model-dropdown')"
-              class="mt-2 w-full h-12 px-4 rounded-xl bg-[#fdfaf5] border border-[#d4c5af] hover:border-[#b86828] flex items-center justify-between text-left transition-all shadow-sm">
+              class="mt-1.5 sm:mt-2 w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-[#fdfaf5] border border-[#d4c5af] hover:border-[#b86828] flex items-center justify-between text-left transition-all shadow-sm">
               <span id="model-selected-text" class="text-sm font-semibold text-[#1c1916] truncate pr-2">Alto 800
                 LXI</span>
               <span class="material-symbols-outlined text-[#7a6f60] text-[18px] transition-transform flex-shrink-0"
@@ -394,15 +411,15 @@
             <input type="hidden" id="car-model" name="model" value="Alto 800 LXI">
 
             <div id="model-dropdown"
-              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-50 p-2.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-2">
+              class="dropdown-menu-panel absolute top-[92px] sm:top-[98px] left-2 right-2 sm:left-4 sm:right-4 z-50 p-2 sm:p-2.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-2">
               <div class="relative">
                 <input type="text" id="model-search-input" placeholder="Search model (e.g. Alto 800, Swift)..."
-                  class="w-full h-9 px-3 pl-8 rounded-lg bg-[#f4ede2] border border-[#d4c5af] text-xs text-[#1c1916] placeholder-[#8a7f72] focus:outline-none focus:border-[#b86828]"
+                  class="w-full h-10 sm:h-9 px-3 pl-8 rounded-lg bg-[#f4ede2] border border-[#d4c5af] text-sm sm:text-xs text-[#1c1916] placeholder-[#8a7f72] focus:outline-none focus:border-[#b86828]"
                   oninput="filterModels(this.value)" onclick="event.stopPropagation()">
                 <span
-                  class="material-symbols-outlined absolute left-2.5 top-2 text-[#8a7f72] text-[16px] pointer-events-none">search</span>
+                  class="material-symbols-outlined absolute left-2.5 top-2.5 sm:top-2 text-[#8a7f72] text-[16px] pointer-events-none">search</span>
               </div>
-              <div id="model-list-container" class="max-h-56 overflow-y-auto space-y-0.5 pr-1">
+              <div id="model-list-container" class="max-h-52 sm:max-h-56 overflow-y-auto space-y-0.5 pr-1">
                 <!-- Populated dynamically via JS -->
               </div>
             </div>
@@ -411,10 +428,10 @@
         </div>
 
         <!-- VEHICLE SPECIFICATIONS GRID (6 ATTRIBUTES) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 relative z-20">
 
           <!-- 3. MANUFACTURE YEAR -->
-          <div class="flex flex-col gap-2 studio-panel p-5 rounded-2xl">
+          <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl">
             <div class="flex items-center justify-between">
               <label for="car-year" class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
                 Manufacture Year
@@ -428,25 +445,25 @@
             <input type="range" id="car-year" min="1995" max="2024" value="2015" class="w-full mt-3"
               oninput="syncYearInput(this.value)">
 
-            <!-- Quick Year Chips -->
-            <div class="flex items-center justify-between gap-1.5 pt-2">
+            <!-- Quick Year Chips (Responsive Grid Layout) -->
+            <div class="grid grid-cols-5 gap-1 sm:gap-1.5 pt-2">
               <button type="button" onclick="setYearQuick(2012, this)"
-                class="year-chip px-2.5 py-1 rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[11px] font-mono text-[#5c5347] transition-colors">2012</button>
+                class="year-chip py-1.5 text-center rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[10px] sm:text-[11px] font-mono text-[#5c5347] transition-colors">2012</button>
               <button type="button" onclick="setYearQuick(2015, this)"
-                class="year-chip active px-2.5 py-1 rounded-lg bg-[#b86828] text-white border border-[#b86828] text-[11px] font-mono font-bold transition-colors">2015</button>
+                class="year-chip active py-1.5 text-center rounded-lg bg-[#b86828] text-white border border-[#b86828] text-[10px] sm:text-[11px] font-mono font-bold transition-colors">2015</button>
               <button type="button" onclick="setYearQuick(2018, this)"
-                class="year-chip px-2.5 py-1 rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[11px] font-mono text-[#5c5347] transition-colors">2018</button>
+                class="year-chip py-1.5 text-center rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[10px] sm:text-[11px] font-mono text-[#5c5347] transition-colors">2018</button>
               <button type="button" onclick="setYearQuick(2021, this)"
-                class="year-chip px-2.5 py-1 rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[11px] font-mono text-[#5c5347] transition-colors">2021</button>
+                class="year-chip py-1.5 text-center rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[10px] sm:text-[11px] font-mono text-[#5c5347] transition-colors">2021</button>
               <button type="button" onclick="setYearQuick(2024, this)"
-                class="year-chip px-2.5 py-1 rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[11px] font-mono text-[#5c5347] transition-colors">2024</button>
+                class="year-chip py-1.5 text-center rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[10px] sm:text-[11px] font-mono text-[#5c5347] transition-colors">2024</button>
             </div>
             <span id="year-error" class="hidden text-[11px] font-mono text-red-600 mt-1">Year must be between 1995 and
               2024</span>
           </div>
 
           <!-- 4. KILOMETERS DRIVEN -->
-          <div class="flex flex-col gap-2 studio-panel p-5 rounded-2xl">
+          <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl">
             <div class="flex items-center justify-between">
               <label for="car-km" class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
                 Kilometers Driven
@@ -460,31 +477,31 @@
             <input type="range" id="car-km" min="0" max="250000" step="1000" value="50000" class="w-full mt-3"
               oninput="syncKmInput(this.value)">
 
-            <!-- Quick KM Chips -->
-            <div class="flex items-center justify-between gap-1.5 pt-2">
+            <!-- Quick KM Chips (Responsive Grid Layout) -->
+            <div class="grid grid-cols-5 gap-1 sm:gap-1.5 pt-2">
               <button type="button" onclick="setKmQuick(15000, this)"
-                class="km-chip px-2.5 py-1 rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[11px] font-mono text-[#5c5347] transition-colors">15k</button>
+                class="km-chip py-1.5 text-center rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[10px] sm:text-[11px] font-mono text-[#5c5347] transition-colors">15k</button>
               <button type="button" onclick="setKmQuick(30000, this)"
-                class="km-chip px-2.5 py-1 rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[11px] font-mono text-[#5c5347] transition-colors">30k</button>
+                class="km-chip py-1.5 text-center rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[10px] sm:text-[11px] font-mono text-[#5c5347] transition-colors">30k</button>
               <button type="button" onclick="setKmQuick(50000, this)"
-                class="km-chip active px-2.5 py-1 rounded-lg bg-[#b86828] text-white border border-[#b86828] text-[11px] font-mono font-bold transition-colors">50k</button>
+                class="km-chip active py-1.5 text-center rounded-lg bg-[#b86828] text-white border border-[#b86828] text-[10px] sm:text-[11px] font-mono font-bold transition-colors">50k</button>
               <button type="button" onclick="setKmQuick(80000, this)"
-                class="km-chip px-2.5 py-1 rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[11px] font-mono text-[#5c5347] transition-colors">80k</button>
+                class="km-chip py-1.5 text-center rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[10px] sm:text-[11px] font-mono text-[#5c5347] transition-colors">80k</button>
               <button type="button" onclick="setKmQuick(120000, this)"
-                class="km-chip px-2.5 py-1 rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[11px] font-mono text-[#5c5347] transition-colors">120k</button>
+                class="km-chip py-1.5 text-center rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[10px] sm:text-[11px] font-mono text-[#5c5347] transition-colors">120k</button>
             </div>
             <span id="km-error" class="hidden text-[11px] font-mono text-red-600 mt-1">Please enter a valid kilometer
               reading</span>
           </div>
 
           <!-- 5. FUEL TYPE -->
-          <div class="flex flex-col gap-2 studio-panel p-5 rounded-2xl relative">
+          <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl relative">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Fuel Type
             </label>
 
             <button type="button" id="fuel-select-trigger" onclick="toggleDropdown('fuel-dropdown')"
-              class="mt-2 w-full h-12 px-4 rounded-xl bg-[#fdfaf5] border border-[#d4c5af] hover:border-[#b86828] flex items-center justify-between text-left transition-all shadow-sm">
+              class="mt-1.5 sm:mt-2 w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-[#fdfaf5] border border-[#d4c5af] hover:border-[#b86828] flex items-center justify-between text-left transition-all shadow-sm">
               <span id="fuel-selected-text" class="text-sm font-semibold text-[#1c1916]">Petrol</span>
               <span class="material-symbols-outlined text-[#7a6f60] text-[18px] transition-transform"
                 id="fuel-chevron">expand_more</span>
@@ -492,7 +509,7 @@
             <input type="hidden" id="car-fuel" name="fuel" value="Petrol">
 
             <div id="fuel-dropdown"
-              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-50 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
+              class="dropdown-menu-panel absolute top-[92px] sm:top-[98px] left-2 right-2 sm:left-4 sm:right-4 z-50 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
               <div onclick="selectFuel('Petrol')" data-value="Petrol"
                 class="fuel-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
                 <div class="flex items-center gap-2">
@@ -529,13 +546,13 @@
           </div>
 
           <!-- 6. SELLER TYPE -->
-          <div class="flex flex-col gap-2 studio-panel p-5 rounded-2xl relative">
+          <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl relative">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Seller Type
             </label>
 
             <button type="button" id="seller-select-trigger" onclick="toggleDropdown('seller-dropdown')"
-              class="mt-2 w-full h-12 px-4 rounded-xl bg-[#fdfaf5] border border-[#d4c5af] hover:border-[#b86828] flex items-center justify-between text-left transition-all shadow-sm">
+              class="mt-1.5 sm:mt-2 w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-[#fdfaf5] border border-[#d4c5af] hover:border-[#b86828] flex items-center justify-between text-left transition-all shadow-sm">
               <span id="seller-selected-text" class="text-sm font-semibold text-[#1c1916]">Individual</span>
               <span class="material-symbols-outlined text-[#7a6f60] text-[18px] transition-transform"
                 id="seller-chevron">expand_more</span>
@@ -543,7 +560,7 @@
             <input type="hidden" id="car-seller" name="seller_type" value="Individual">
 
             <div id="seller-dropdown"
-              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-50 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
+              class="dropdown-menu-panel absolute top-[92px] sm:top-[98px] left-2 right-2 sm:left-4 sm:right-4 z-50 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
               <div onclick="selectSeller('Individual')" data-value="Individual"
                 class="seller-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
                 <div class="flex items-center gap-2">
@@ -572,12 +589,12 @@
           </div>
 
           <!-- 7. TRANSMISSION (DUAL SWITCH) -->
-          <div class="flex flex-col gap-2 studio-panel p-5 rounded-2xl">
+          <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Transmission
             </label>
 
-            <div class="grid grid-cols-2 gap-2 h-12 bg-[#e6dccb] p-1.5 rounded-xl border border-[#d2c3ae] mt-2">
+            <div class="grid grid-cols-2 gap-2 h-11 sm:h-12 bg-[#e6dccb] p-1.5 rounded-xl border border-[#d2c3ae] mt-1.5 sm:mt-2">
               <button type="button" id="trans-btn-manual" onclick="setTransmission('Manual')"
                 class="rounded-lg text-xs font-black transition-all flex items-center justify-center gap-1.5 bg-[#b86828] text-white shadow-sm">
                 Manual
@@ -591,13 +608,13 @@
           </div>
 
           <!-- 8. OWNER HISTORY -->
-          <div class="flex flex-col gap-2 studio-panel p-5 rounded-2xl relative">
+          <div class="flex flex-col gap-2 studio-panel p-4 sm:p-5 rounded-xl sm:rounded-2xl relative">
             <label class="text-xs font-bold text-[#221e1a] uppercase tracking-widest">
               Ownership History
             </label>
 
             <button type="button" id="owner-select-trigger" onclick="toggleDropdown('owner-dropdown')"
-              class="mt-2 w-full h-12 px-4 rounded-xl bg-[#fdfaf5] border border-[#d4c5af] hover:border-[#b86828] flex items-center justify-between text-left transition-all shadow-sm">
+              class="mt-1.5 sm:mt-2 w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-[#fdfaf5] border border-[#d4c5af] hover:border-[#b86828] flex items-center justify-between text-left transition-all shadow-sm">
               <span id="owner-selected-text" class="text-sm font-semibold text-[#1c1916]">First Owner</span>
               <span class="material-symbols-outlined text-[#7a6f60] text-[18px] transition-transform"
                 id="owner-chevron">expand_more</span>
@@ -605,7 +622,7 @@
             <input type="hidden" id="car-owner" name="owner" value="First Owner">
 
             <div id="owner-dropdown"
-              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-50 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
+              class="dropdown-menu-panel absolute top-[92px] sm:top-[98px] left-2 right-2 sm:left-4 sm:right-4 z-50 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
               <div onclick="selectOwner('First Owner')" data-value="First Owner"
                 class="owner-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
                 <div class="flex items-center gap-2">
@@ -658,9 +675,9 @@
             <span>Real-time market price analysis</span>
           </div>
 
-          <!-- COGNAC LEATHER BUTTON MATCHING DRIBBBLE REFERENCE -->
+          <!-- COGNAC LEATHER BUTTON MATCHING DRIBBBLE REFERENCE (FULL WIDTH ON MOBILE) -->
           <button id="predict-btn" onclick="handleEstimateSubmit()" type="button"
-            class="px-10 py-4 rounded-2xl bg-gradient-to-r from-[#b86828] to-[#9e541b] hover:from-[#c7722d] hover:to-[#ac5d20] active:from-[#944e18] text-white font-black text-sm tracking-wide shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed">
+            class="w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-[#b86828] to-[#9e541b] hover:from-[#c7722d] hover:to-[#ac5d20] active:from-[#944e18] text-white font-black text-sm tracking-wide shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed">
             <span class="material-symbols-outlined text-[18px]">calculate</span>
             <span id="btn-text">Estimate Price</span>
             <span id="btn-spinner"
@@ -676,7 +693,7 @@
     <section id="result-container">
 
       <!-- Initial Empty State -->
-      <div id="empty-state" class="rounded-3xl studio-card p-8 text-center border-dashed border border-[#d2c3ae]">
+      <div id="empty-state" class="rounded-2xl sm:rounded-3xl studio-card p-6 sm:p-8 text-center border-dashed border border-[#d2c3ae]">
         <div
           class="w-12 h-12 rounded-2xl bg-[#ede3d3] border border-[#d4c5af] text-[#b86828] mx-auto flex items-center justify-center mb-3">
           <span class="material-symbols-outlined text-[24px]">payments</span>
@@ -689,12 +706,12 @@
 
       <!-- Revealed Result Card -->
       <div id="result-card"
-        class="hidden rounded-3xl studio-card p-6 sm:p-8 lg:p-10 relative overflow-hidden transition-all border border-[#d8ccbb]">
+        class="hidden rounded-2xl sm:rounded-3xl studio-card p-5 sm:p-8 lg:p-10 relative overflow-hidden transition-all border border-[#d8ccbb]">
 
         <!-- Top BMW M Tricolor Accent Bar -->
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0066b1] via-[#0c2340] to-[#e21a22]"></div>
 
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative z-10 pt-2">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 sm:gap-8 relative z-10 pt-2">
 
           <!-- Price Metric -->
           <div class="space-y-1.5">
@@ -705,7 +722,7 @@
 
             <div class="flex items-baseline gap-3">
               <span id="display-price"
-                class="font-mono font-black text-4xl sm:text-5xl lg:text-6xl text-[#1c1916] tracking-tight">
+                class="font-mono font-black text-3xl sm:text-5xl lg:text-6xl text-[#1c1916] tracking-tight break-words">
                 ₹ 0
               </span>
             </div>
@@ -716,7 +733,7 @@
           </div>
 
           <!-- Market Category Card -->
-          <div class="flex items-center sm:min-w-[240px]">
+          <div class="flex items-center w-full sm:w-auto sm:min-w-[240px]">
             <div class="w-full bg-[#ede3d3]/85 p-4 rounded-2xl border border-[#d4c5af] flex flex-col justify-between">
               <span class="text-xs text-[#7a6f60] font-medium">Market Category</span>
               <div class="flex items-center gap-2 mt-1.5">
@@ -731,19 +748,19 @@
 
         <!-- Spec Summary Line & Position Bar -->
         <div
-          class="mt-8 pt-6 border-t border-[#d8ccbb] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div class="text-xs text-[#52483a] font-medium">
+          class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-[#d8ccbb] flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+          <div class="text-xs text-[#52483a] font-medium leading-relaxed">
             <span id="vehicle-summary-line">Vehicle: Maruti • Alto 800 LXI • 2015 • Petrol • Manual • 50,000 KM • First
               Owner</span>
           </div>
 
-          <div class="flex items-center gap-3">
-            <span class="text-xs text-[#665b4c]">Market Position:</span>
-            <div class="w-32 h-2 rounded-full bg-[#dfd3c0] border border-[#d2c3ae] overflow-hidden relative">
+          <div class="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
+            <span class="text-xs text-[#665b4c] flex-shrink-0">Market Position:</span>
+            <div class="w-28 sm:w-32 h-2 rounded-full bg-[#dfd3c0] border border-[#d2c3ae] overflow-hidden relative">
               <div id="market-gauge-fill" class="h-full bg-[#b86828] transition-all duration-1000" style="width: 60%;">
               </div>
             </div>
-            <span id="market-gauge-label" class="text-xs text-[#1c1916] font-bold">Mid-Range</span>
+            <span id="market-gauge-label" class="text-xs text-[#1c1916] font-bold flex-shrink-0">Mid-Range</span>
           </div>
         </div>
 
@@ -752,7 +769,7 @@
     </section>
 
     <!-- 5. MARKET CATEGORY TIERS -->
-    <section id="segments" class="rounded-3xl studio-card p-6 sm:p-8 lg:p-10 space-y-6 shadow-2xl">
+    <section id="segments" class="rounded-2xl sm:rounded-3xl studio-card p-4 sm:p-8 lg:p-10 space-y-5 sm:space-y-6 shadow-2xl">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#d8ccbb] pb-4">
         <div>
           <h2 class="text-xl sm:text-2xl font-black text-[#1c1916] tracking-tight">Market Price Guide</h2>
@@ -760,16 +777,16 @@
             How vehicles are grouped across different market price ranges in India.
           </p>
         </div>
-        <div class="px-3.5 py-1 rounded-full bg-[#ede3d3] border border-[#d4c5af] text-xs text-[#52483a] font-semibold">
+        <div class="px-3.5 py-1 rounded-full bg-[#ede3d3] border border-[#d4c5af] text-xs text-[#52483a] font-semibold w-fit">
           Market Overview
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
 
         <!-- Budget Tier -->
         <div
-          class="bg-[#ede3d3]/85 border border-[#d4c5af] rounded-2xl p-5 flex flex-col justify-between hover:border-[#b86828] transition-colors">
+          class="bg-[#ede3d3]/85 border border-[#d4c5af] rounded-xl sm:rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-[#b86828] transition-colors">
           <div>
             <div class="flex items-center justify-between mb-3">
               <span
@@ -790,7 +807,7 @@
 
         <!-- Mid-Range Tier (Highlighted) -->
         <div
-          class="bg-[#fdfaf5] border-2 border-[#b86828] rounded-2xl p-5 flex flex-col justify-between shadow-lg transition-colors">
+          class="bg-[#fdfaf5] border-2 border-[#b86828] rounded-xl sm:rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg transition-colors">
           <div>
             <div class="flex items-center justify-between mb-3">
               <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#b86828] text-white">
@@ -810,7 +827,7 @@
 
         <!-- Premium Tier -->
         <div
-          class="bg-[#ede3d3]/85 border border-[#d4c5af] rounded-2xl p-5 flex flex-col justify-between hover:border-[#b86828] transition-colors">
+          class="bg-[#ede3d3]/85 border border-[#d4c5af] rounded-xl sm:rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-[#b86828] transition-colors">
           <div>
             <div class="flex items-center justify-between mb-3">
               <span
@@ -1359,6 +1376,20 @@
     // ---------------------------------------------------------
     // 3. REFINED CUSTOM DROPDOWNS & FORM SYNC
     // ---------------------------------------------------------
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-nav-menu');
+      const icon = document.getElementById('mobile-menu-icon');
+      if (!menu) return;
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        if (icon) icon.textContent = 'close';
+      } else {
+        menu.classList.add('hidden');
+        if (icon) icon.textContent = 'menu';
+      }
+    }
+
     function toggleDropdown(id) {
       const dropdown = document.getElementById(id);
       const isAlreadyOpen = dropdown.classList.contains('open');
