@@ -1,4 +1,4 @@
-# 🏎️ AutoPrice AI — Used Car Valuation & Market Intelligence Platform
+#  AutoPrice AI — Used Car Valuation & Market Intelligence Platform
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
@@ -10,20 +10,20 @@
 
 ---
 
-## ✨ Features
+## Features
 
-- **🎮 Interactive 3D Vehicle Studio**:
+- **Interactive 3D Vehicle Studio**:
   - Real-time 3D Porsche GLB rendering powered by Three.js and DRACOLoader.
   - Interactive camera orbit controls, zoom, pan, and real-time lighting with metallic car paint shaders.
   - Live color palette selector (Jet Black, Guard Red, Gentian Blue, Carrara White, Agate Grey, Python Green).
   - Studio ground shadow, reflection plane, and camera reset controls.
 
-- **🤖 Dual Machine Learning Valuation Engine**:
+- **Dual Machine Learning Valuation Engine**:
   - **Random Forest Regressor**: Primary high-precision estimator trained on 4,300+ real market sales records across 1,500+ one-hot encoded vehicle specifications.
   - **Artificial Neural Network (ANN)**: Secondary verification model computing non-linear hidden layer activations.
   - **K-Means Clustering**: Classifies vehicles into distinct market segments: **Budget**, **Mid-Range**, or **Premium**.
 
-- **⚡ Modern Responsive UI**:
+- **Modern Responsive UI**:
   - Porsche luxury-inspired aesthetic (warm cognac accents, frosted glassmorphism, animated odometer counters).
   - Dynamic brand and model dropdown filters matching 25+ major automotive manufacturers.
   - Interactive market tier gauge bar and vehicle summary badge.
@@ -31,7 +31,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 | :--- | :--- |
@@ -43,34 +43,35 @@
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 autoprice-ai/
-├── .github/
-│   └── workflows/pages.yml          # GitHub Pages deployment workflow
-├── frontend/
-│   ├── index.html                   # Interactive studio & valuation UI
-│   ├── car.glb                      # 3D vehicle model
-│   ├── car_brands_models.js         # Dataset brands & models list
-│   └── car_model_data.js            # Fallback embedded model data
-├── app.py                           # Standalone local FastAPI server
-├── index.html                       # Web application entry point (GitHub Pages)
-├── best_model.pkl                   # Trained Random Forest Regressor
-├── scaler.pkl                       # StandardScaler for features
-├── feature_columns.pkl              # Feature column mapping (1531 columns)
-├── kmeans_model.pkl                 # K-Means clustering model
-├── cluster_scaler.pkl               # StandardScaler for clustering
-├── cluster_names.pkl                # Segment label mappings
-├── cluster_feature_columns.pkl      # Cluster feature schema
-├── ann_model.pkl                    # Custom ANN weights & biases
-├── requirements.txt                 # Local development Python dependencies
-└── .gitignore                       # Git ignore rules
+├── car_data.csv                  # Dataset: Real Indian car sales records
+├── Car_Price_Prediction.ipynb    # Jupyter Notebook: Data analysis & model training
+├── app.py                        # Standalone local FastAPI server
+├── index.html                    # Web application entry point (Interactive 3D studio & valuation UI)
+├── best_model.pkl                # Trained Random Forest Regressor
+├── ann_model.pkl                 # Custom ANN weights & biases
+├── kmeans_model.pkl              # K-Means clustering model
+├── scaler.pkl                    # StandardScaler for features
+├── cluster_scaler.pkl            # StandardScaler for clustering
+├── cluster_names.pkl             # Segment label mappings
+├── cluster_feature_columns.pkl   # Cluster feature schema
+├── feature_columns.pkl           # Feature column mapping
+├── model_results.csv             # Model performance comparison metrics
+├── cluster_summary.csv           # Cluster characteristics summary
+├── car.glb                       # 3D vehicle model
+├── car_brands_models.js          # Dataset brands & models list
+├── car_model_data.js             # Fallback embedded model data
+├── requirements.txt              # Local development Python dependencies
+├── README.md                     # Project documentation
+└── .gitignore                    # Git ignore rules
 ```
 
 ---
 
-## 🚀 Quick Start (Run Locally)
+## Quick Start (Run Locally)
 
 ### 1. Clone Repository
 ```bash
@@ -90,7 +91,7 @@ uvicorn app:app --reload --port 8000
 API Documentation will be live at: `http://127.0.0.1:8000/docs`
 
 ### 4. Open the Frontend
-Open `index.html` (or `frontend/index.html`) in your browser, or run a lightweight static server:
+Open `index.html` in your browser, or run a lightweight static server:
 ```bash
 npx serve .
 # or
@@ -100,7 +101,7 @@ Visit `http://localhost:3000` to interact with the 3D car studio and valuation e
 
 ---
 
-## 🌐 API Specification
+## API Specification
 
 ### `POST /analyze` or `/api/analyze`
 
@@ -130,7 +131,7 @@ Visit `http://localhost:3000` to interact with the 3D car studio and valuation e
 
 ---
 
-## 🚀 Deploy to GitHub Pages
+##  Deploy to GitHub Pages
 
 1. Push your repository to GitHub.
 2. Go to **Settings** > **Pages** in your repository.
@@ -139,6 +140,6 @@ Visit `http://localhost:3000` to interact with the 3D car studio and valuation e
 
 ---
 
-## 📄 License
+##  License
 
 Distributed under the MIT License. Feel free to use and modify for personal or commercial projects.
