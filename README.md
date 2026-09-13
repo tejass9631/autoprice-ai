@@ -4,7 +4,7 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Three.js](https://img.shields.io/badge/Three.js-r128-black?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
-[![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white)](https://pages.github.com/)
 
 > **AutoPrice AI** is a modern, full-stack used car valuation and market intelligence application. It combines an interactive **Three.js 3D car studio**, **dual machine learning models (Random Forest + Artificial Neural Network)**, and **K-Means market clustering** to deliver instant, high-precision vehicle pricing in Indian Rupees (₹).
 
@@ -39,7 +39,7 @@
 | **3D Engine** | Three.js (r128), GLTFLoader, DRACOLoader, OrbitControls |
 | **Backend API** | FastAPI, Pydantic, Uvicorn (ASGI) |
 | **Machine Learning** | Scikit-Learn (Random Forest, KMeans, StandardScaler), NumPy, Joblib |
-| **Cloud & Deployment**| Vercel Serverless Functions, GitHub Actions |
+| **Cloud & Deployment**| GitHub Pages, GitHub Actions |
 
 ---
 
@@ -47,25 +47,23 @@
 
 ```text
 autoprice-ai/
-├── api/
-│   ├── index.py                     # Vercel Serverless FastAPI handler
-│   ├── requirements.txt             # Serverless Python dependencies
-│   ├── best_model.pkl               # Trained Random Forest Regressor
-│   ├── scaler.pkl                   # StandardScaler for features
-│   ├── feature_columns.pkl          # Feature column mapping (1531 columns)
-│   ├── kmeans_model.pkl             # K-Means clustering model
-│   ├── cluster_scaler.pkl           # StandardScaler for clustering
-│   ├── cluster_names.pkl            # Segment label mappings
-│   ├── cluster_feature_columns.pkl  # Cluster feature schema
-│   └── ann_model.pkl                # Custom ANN weights & biases
+├── .github/
+│   └── workflows/pages.yml          # GitHub Pages deployment workflow
 ├── frontend/
 │   ├── index.html                   # Interactive studio & valuation UI
 │   ├── car.glb                      # 3D vehicle model
 │   ├── car_brands_models.js         # Dataset brands & models list
 │   └── car_model_data.js            # Fallback embedded model data
 ├── app.py                           # Standalone local FastAPI server
-├── index.html                       # Root entry point for Vercel
-├── vercel.json                      # Vercel routing & serverless config
+├── index.html                       # Web application entry point (GitHub Pages)
+├── best_model.pkl                   # Trained Random Forest Regressor
+├── scaler.pkl                       # StandardScaler for features
+├── feature_columns.pkl              # Feature column mapping (1531 columns)
+├── kmeans_model.pkl                 # K-Means clustering model
+├── cluster_scaler.pkl               # StandardScaler for clustering
+├── cluster_names.pkl                # Segment label mappings
+├── cluster_feature_columns.pkl      # Cluster feature schema
+├── ann_model.pkl                    # Custom ANN weights & biases
 ├── requirements.txt                 # Local development Python dependencies
 └── .gitignore                       # Git ignore rules
 ```
@@ -132,12 +130,12 @@ Visit `http://localhost:3000` to interact with the 3D car studio and valuation e
 
 ---
 
-## ☁️ Deploy to Vercel
+## 🚀 Deploy to GitHub Pages
 
 1. Push your repository to GitHub.
-2. Visit [Vercel Dashboard](https://vercel.com/new).
-3. Select and import your `autoprice-ai` repository.
-4. Click **Deploy**. Vercel will automatically build the static assets and the serverless Python functions in `/api`!
+2. Go to **Settings** > **Pages** in your repository.
+3. Under **Build and deployment** > **Source**, select **GitHub Actions**.
+4. The workflow in `.github/workflows/pages.yml` will automatically build and deploy your application live!
 
 ---
 

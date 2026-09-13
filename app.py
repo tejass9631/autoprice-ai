@@ -130,6 +130,14 @@ def health():
 @app.post("/analyze")
 @app.post("/api/analyze")
 def analyze_car(car: CarInput):
+    # Security: input boundaries and range validation
+    if car.year < 1980 or car.year > 2026:
+        raise HTTPException(status_code=422, detail="Manufacture year must be between 1980 and 2026.")
+    if car.km_driven < 0 or car.km_driven > 2000000:
+        raise HTTPException(status_code=422, detail="Kilometers driven must be between 0 and 2,000,000.")
+    if not car.brand or len(car.brand) > 100 or not car.model or len(car.model) > 100:
+        raise HTTPException(status_code=422, detail="Invalid brand or model input.")
+
     try:
         # Price prediction feature vector
         vec = np.zeros((1, len(feature_columns)), dtype=np.float64)
@@ -194,5 +202,7 @@ def analyze_car(car: CarInput):
             "market_segment": market_segment,
             "best_model": "Random Forest"
         }
+    except HTTPException:
+        raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail="Internal calculation error. Please verify vehicle specifications.")

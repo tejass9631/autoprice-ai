@@ -347,7 +347,7 @@
       <form id="valuation-form" onsubmit="return false;" class="space-y-6">
 
         <!-- VEHICLE IDENTITY: BRAND & MODEL -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-30">
 
           <!-- 1. VEHICLE BRAND -->
           <div class="flex flex-col gap-2 studio-panel p-5 rounded-2xl relative">
@@ -411,7 +411,7 @@
         </div>
 
         <!-- VEHICLE SPECIFICATIONS GRID (6 ATTRIBUTES) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-20">
 
           <!-- 3. MANUFACTURE YEAR -->
           <div class="flex flex-col gap-2 studio-panel p-5 rounded-2xl">
@@ -492,25 +492,37 @@
             <input type="hidden" id="car-fuel" name="fuel" value="Petrol">
 
             <div id="fuel-dropdown"
-              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-40 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
-              <div onclick="selectFuel('Petrol')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>Petrol</span>
+              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-50 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
+              <div onclick="selectFuel('Petrol')" data-value="Petrol"
+                class="fuel-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="fuel-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">Petrol</span>
+                </div>
                 <span class="text-[#b86828] text-[10px] font-bold uppercase">Standard</span>
               </div>
-              <div onclick="selectFuel('Diesel')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>Diesel</span>
+              <div onclick="selectFuel('Diesel')" data-value="Diesel"
+                class="fuel-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="fuel-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">Diesel</span>
+                </div>
                 <span class="text-[#7a6f60] text-[10px] uppercase">High Range</span>
               </div>
-              <div onclick="selectFuel('CNG')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>CNG</span>
+              <div onclick="selectFuel('CNG')" data-value="CNG"
+                class="fuel-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="fuel-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">CNG</span>
+                </div>
                 <span class="text-[#7a6f60] text-[10px] uppercase">Economical</span>
               </div>
-              <div onclick="selectFuel('LPG')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>LPG</span>
+              <div onclick="selectFuel('LPG')" data-value="LPG"
+                class="fuel-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="fuel-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">LPG</span>
+                </div>
                 <span class="text-[#7a6f60] text-[10px] uppercase">Gas Fuel</span>
               </div>
             </div>
@@ -531,20 +543,29 @@
             <input type="hidden" id="car-seller" name="seller_type" value="Individual">
 
             <div id="seller-dropdown"
-              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-40 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
-              <div onclick="selectSeller('Individual')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>Individual (Direct Owner)</span>
+              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-50 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
+              <div onclick="selectSeller('Individual')" data-value="Individual"
+                class="seller-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="seller-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">Individual (Direct Owner)</span>
+                </div>
                 <span class="text-[#7a6f60] text-[10px] uppercase">Direct</span>
               </div>
-              <div onclick="selectSeller('Dealer')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>Dealer (Showroom)</span>
+              <div onclick="selectSeller('Dealer')" data-value="Dealer"
+                class="seller-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="seller-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">Dealer (Showroom)</span>
+                </div>
                 <span class="text-[#7a6f60] text-[10px] uppercase">Commercial</span>
               </div>
-              <div onclick="selectSeller('Trustmark Dealer')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>Trustmark Dealer</span>
+              <div onclick="selectSeller('Trustmark Dealer')" data-value="Trustmark Dealer"
+                class="seller-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="seller-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">Trustmark Dealer</span>
+                </div>
                 <span class="text-[#b86828] text-[10px] font-bold uppercase">Certified</span>
               </div>
             </div>
@@ -584,30 +605,45 @@
             <input type="hidden" id="car-owner" name="owner" value="First Owner">
 
             <div id="owner-dropdown"
-              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-40 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
-              <div onclick="selectOwner('First Owner')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>First Owner</span>
+              class="dropdown-menu-panel absolute top-[98px] left-4 right-4 z-50 p-1.5 rounded-2xl bg-[#fdfaf5] border border-[#d4c5af] shadow-2xl space-y-0.5">
+              <div onclick="selectOwner('First Owner')" data-value="First Owner"
+                class="owner-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="owner-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">First Owner</span>
+                </div>
                 <span class="text-[#b86828] text-[10px] font-bold uppercase">Best Resale</span>
               </div>
-              <div onclick="selectOwner('Second Owner')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>Second Owner</span>
+              <div onclick="selectOwner('Second Owner')" data-value="Second Owner"
+                class="owner-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="owner-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">Second Owner</span>
+                </div>
                 <span class="text-[#7a6f60] text-[10px] uppercase">Standard</span>
               </div>
-              <div onclick="selectOwner('Third Owner')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>Third Owner</span>
+              <div onclick="selectOwner('Third Owner')" data-value="Third Owner"
+                class="owner-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="owner-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">Third Owner</span>
+                </div>
                 <span class="text-[#7a6f60] text-[10px] uppercase">Fair</span>
               </div>
-              <div onclick="selectOwner('Fourth &amp; Above Owner')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>Fourth &amp; Above Owner</span>
+              <div onclick="selectOwner('Fourth &amp; Above Owner')" data-value="Fourth & Above Owner"
+                class="owner-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="owner-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">Fourth &amp; Above Owner</span>
+                </div>
                 <span class="text-[#7a6f60] text-[10px] uppercase">Higher Wear</span>
               </div>
-              <div onclick="selectOwner('Test Drive Car')"
-                class="px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
-                <span>Test Drive Car</span>
+              <div onclick="selectOwner('Test Drive Car')" data-value="Test Drive Car"
+                class="owner-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] transition-colors">
+                <div class="flex items-center gap-2">
+                  <span class="owner-check material-symbols-outlined text-[16px] text-[#b86828] hidden">check</span>
+                  <span class="font-medium">Test Drive Car</span>
+                </div>
                 <span class="text-[#7a6f60] text-[10px] uppercase">Demo Vehicle</span>
               </div>
             </div>
@@ -679,10 +715,9 @@
             </p>
           </div>
 
-          <!-- Market Category & Confidence Cards -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:min-w-[420px]">
-
-            <div class="bg-[#ede3d3]/85 p-4 rounded-2xl border border-[#d4c5af] flex flex-col justify-between">
+          <!-- Market Category Card -->
+          <div class="flex items-center sm:min-w-[240px]">
+            <div class="w-full bg-[#ede3d3]/85 p-4 rounded-2xl border border-[#d4c5af] flex flex-col justify-between">
               <span class="text-xs text-[#7a6f60] font-medium">Market Category</span>
               <div class="flex items-center gap-2 mt-1.5">
                 <span id="segment-badge-dot" class="w-2.5 h-2.5 rounded-full bg-[#b86828]"></span>
@@ -690,16 +725,6 @@
               </div>
               <span class="text-[11px] text-[#8a7f72] mt-1">Vehicle price bracket</span>
             </div>
-
-            <div class="bg-[#ede3d3]/85 p-4 rounded-2xl border border-[#d4c5af] flex flex-col justify-between">
-              <span class="text-xs text-[#7a6f60] font-medium">Market Confidence</span>
-              <div class="flex items-center gap-2 mt-1.5">
-                <span class="material-symbols-outlined text-emerald-600 text-[18px]">verified</span>
-                <span class="font-black text-lg text-emerald-700">High (94%)</span>
-              </div>
-              <span class="text-[11px] text-[#8a7f72] mt-1">Matched sales trends</span>
-            </div>
-
           </div>
 
         </div>
@@ -753,7 +778,7 @@
               </span>
               <span class="text-xs font-mono text-[#7a6f60]">Tier 1</span>
             </div>
-            <h4 class="font-bold text-sm text-[#1c1916]">Daily Commuter &amp; Hatchbacks</h4>
+            <h4 class="font-bold text-sm text-[#1c1916]">Budget &amp; Economy Segment</h4>
             <p class="text-xs text-[#665b4c] font-sans mt-2 leading-relaxed">
               Affordable, reliable cars with high fuel economy and low maintenance cost.
             </p>
@@ -773,7 +798,7 @@
               </span>
               <span class="text-xs font-mono text-[#b86828] font-bold">Tier 2</span>
             </div>
-            <h4 class="font-bold text-sm text-[#1c1916]">Family Sedans &amp; Compact SUVs</h4>
+            <h4 class="font-bold text-sm text-[#1c1916]">Mid-Range &amp; Family Segment</h4>
             <p class="text-xs text-[#52483a] font-sans mt-2 leading-relaxed">
               Comfortable vehicles with modern safety features, balanced power, and strong resale value.
             </p>
@@ -794,9 +819,9 @@
               </span>
               <span class="text-xs font-mono text-[#7a6f60]">Tier 3</span>
             </div>
-            <h4 class="font-bold text-sm text-[#1c1916]">Luxury Sedans &amp; Full-Size SUVs</h4>
+            <h4 class="font-bold text-sm text-[#1c1916]">Premium &amp; Luxury Segment</h4>
             <p class="text-xs text-[#665b4c] font-sans mt-2 leading-relaxed">
-              High-end vehicles, automatic transmissions, and luxury brand nameplates commanding premium value.
+              High-end vehicles with advanced comfort, superior performance, and premium brand value.
             </p>
           </div>
           <div class="mt-4 pt-3 border-t border-[#d8ccbb] text-xs text-[#7a6f60] font-semibold">
@@ -1227,7 +1252,7 @@
 
       container.innerHTML = '';
       if (filtered.length === 0) {
-        container.innerHTML = '<div class="px-3 py-2 text-xs text-[#505a6e] text-center">No brands match search</div>';
+        container.innerHTML = '<div class="px-3 py-3 text-xs text-[#7a6f60] text-center italic">No brands match search</div>';
         return;
       }
 
@@ -1237,10 +1262,17 @@
         const item = document.createElement('div');
         const count = window.CAR_BRANDS_MODELS[brand].length;
         const isSelected = currentBrand === brand;
-        item.className = `px-3 py-2 rounded-lg hover:bg-[#181f2b] cursor-pointer flex items-center justify-between text-xs transition-colors ${isSelected ? 'bg-white text-black font-bold' : 'text-white'}`;
+        item.className = `px-3.5 py-2.5 rounded-xl cursor-pointer flex items-center justify-between text-xs transition-colors ${
+          isSelected
+            ? 'bg-[#ede4d4] border border-[#d4c5af] text-[#b86828] font-bold shadow-xs'
+            : 'text-[#1c1916] hover:bg-[#ede4d4] font-medium'
+        }`;
         item.innerHTML = `
-          <span>${brand}</span>
-          <span class="text-[10px] ${isSelected ? 'text-black/70' : 'text-[#727d91]'} font-mono">${count} models</span>
+          <div class="flex items-center gap-2">
+            ${isSelected ? '<span class="material-symbols-outlined text-[16px] text-[#b86828]">check</span>' : ''}
+            <span>${brand}</span>
+          </div>
+          <span class="text-[10px] ${isSelected ? 'text-[#b86828]' : 'text-[#7a6f60]'} font-mono">${count} models</span>
         `;
         item.onclick = (e) => {
           e.stopPropagation();
@@ -1283,7 +1315,7 @@
 
       container.innerHTML = '';
       if (filtered.length === 0) {
-        container.innerHTML = '<div class="px-3 py-2 text-xs text-[#505a6e] text-center">No models match search</div>';
+        container.innerHTML = '<div class="px-3 py-3 text-xs text-[#7a6f60] text-center italic">No models match search</div>';
         return;
       }
 
@@ -1292,10 +1324,14 @@
       filtered.forEach(model => {
         const item = document.createElement('div');
         const isSelected = currentSelected === model;
-        item.className = `px-3 py-2 rounded-lg hover:bg-[#181f2b] cursor-pointer flex items-center justify-between text-xs transition-colors ${isSelected ? 'bg-white text-black font-bold' : 'text-white'}`;
+        item.className = `px-3.5 py-2.5 rounded-xl cursor-pointer flex items-center justify-between text-xs transition-colors ${
+          isSelected
+            ? 'bg-[#ede4d4] border border-[#d4c5af] text-[#b86828] font-bold shadow-xs'
+            : 'text-[#1c1916] hover:bg-[#ede4d4] font-medium'
+        }`;
         item.innerHTML = `
           <span class="truncate pr-2">${model}</span>
-          ${isSelected ? '<span class="material-symbols-outlined text-[16px] text-black flex-shrink-0">check</span>' : ''}
+          ${isSelected ? '<span class="material-symbols-outlined text-[16px] text-[#b86828] flex-shrink-0 font-bold">check</span>' : ''}
         `;
         item.onclick = (e) => {
           e.stopPropagation();
@@ -1358,27 +1394,64 @@
       });
     }
 
-    window.addEventListener('click', (e) => {
-      if (!e.target.closest('.relative')) {
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown-menu-panel') && !e.target.closest('button[id$="-select-trigger"]')) {
         closeAllDropdowns();
       }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAllDropdowns();
     });
 
     function selectFuel(val) {
       document.getElementById('car-fuel').value = val;
       document.getElementById('fuel-selected-text').innerText = val;
+      document.querySelectorAll('.fuel-opt').forEach(opt => {
+        const isMatch = opt.getAttribute('data-value') === val;
+        const check = opt.querySelector('.fuel-check');
+        if (isMatch) {
+          opt.className = 'fuel-opt px-3.5 py-2.5 rounded-xl bg-[#ede4d4] border border-[#d4c5af] text-[#b86828] font-bold cursor-pointer flex items-center justify-between text-xs transition-colors shadow-xs';
+          if (check) check.classList.remove('hidden');
+        } else {
+          opt.className = 'fuel-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] font-medium transition-colors';
+          if (check) check.classList.add('hidden');
+        }
+      });
       closeAllDropdowns();
     }
 
     function selectSeller(val) {
       document.getElementById('car-seller').value = val;
       document.getElementById('seller-selected-text').innerText = val;
+      document.querySelectorAll('.seller-opt').forEach(opt => {
+        const isMatch = opt.getAttribute('data-value') === val;
+        const check = opt.querySelector('.seller-check');
+        if (isMatch) {
+          opt.className = 'seller-opt px-3.5 py-2.5 rounded-xl bg-[#ede4d4] border border-[#d4c5af] text-[#b86828] font-bold cursor-pointer flex items-center justify-between text-xs transition-colors shadow-xs';
+          if (check) check.classList.remove('hidden');
+        } else {
+          opt.className = 'seller-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] font-medium transition-colors';
+          if (check) check.classList.add('hidden');
+        }
+      });
       closeAllDropdowns();
     }
 
     function selectOwner(val) {
       document.getElementById('car-owner').value = val;
       document.getElementById('owner-selected-text').innerText = val;
+      document.querySelectorAll('.owner-opt').forEach(opt => {
+        const isMatch = opt.getAttribute('data-value') === val;
+        const check = opt.querySelector('.owner-check');
+        if (isMatch) {
+          opt.className = 'owner-opt px-3.5 py-2.5 rounded-xl bg-[#ede4d4] border border-[#d4c5af] text-[#b86828] font-bold cursor-pointer flex items-center justify-between text-xs transition-colors shadow-xs';
+          if (check) check.classList.remove('hidden');
+        } else {
+          opt.className = 'owner-opt px-3.5 py-2.5 rounded-xl hover:bg-[#ede4d4] cursor-pointer flex items-center justify-between text-xs text-[#1c1916] font-medium transition-colors';
+          if (check) check.classList.add('hidden');
+        }
+      });
       closeAllDropdowns();
     }
 
@@ -1387,12 +1460,15 @@
       const btnManual = document.getElementById('trans-btn-manual');
       const btnAuto = document.getElementById('trans-btn-auto');
 
+      const activeClass = 'rounded-lg text-xs font-black transition-all flex items-center justify-center gap-1.5 bg-[#b86828] text-white shadow-sm';
+      const inactiveClass = 'rounded-lg text-xs font-semibold text-[#665b4c] hover:text-[#1c1916] transition-all flex items-center justify-center gap-1.5';
+
       if (type === 'Manual') {
-        btnManual.className = 'rounded-lg text-xs font-black transition-all flex items-center justify-center gap-1.5 bg-white text-black shadow-sm';
-        btnAuto.className = 'rounded-lg text-xs font-semibold text-[#727d91] hover:text-white transition-all flex items-center justify-center gap-1.5';
+        btnManual.className = activeClass;
+        btnAuto.className = inactiveClass;
       } else {
-        btnAuto.className = 'rounded-lg text-xs font-black transition-all flex items-center justify-center gap-1.5 bg-white text-black shadow-sm';
-        btnManual.className = 'rounded-lg text-xs font-semibold text-[#727d91] hover:text-white transition-all flex items-center justify-center gap-1.5';
+        btnAuto.className = activeClass;
+        btnManual.className = inactiveClass;
       }
     }
 
@@ -1401,9 +1477,9 @@
 
       document.querySelectorAll('.year-chip').forEach(btn => {
         if (btn.innerText.trim() === String(val)) {
-          btn.className = 'year-chip active px-2.5 py-1 rounded-lg bg-white text-black border border-white text-[11px] font-mono font-bold transition-colors';
+          btn.className = 'year-chip active px-2.5 py-1 rounded-lg bg-[#b86828] text-white border border-[#b86828] text-[11px] font-mono font-bold transition-colors';
         } else {
-          btn.className = 'year-chip px-2.5 py-1 rounded-lg bg-[#090b10] hover:bg-[#181e2b] border border-[#1f2738] text-[11px] font-mono text-[#8e98ab] transition-colors';
+          btn.className = 'year-chip px-2.5 py-1 rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[11px] font-mono text-[#5c5347] transition-colors';
         }
       });
     }
@@ -1420,9 +1496,9 @@
       const kVal = Math.round(Number(val) / 1000) + 'k';
       document.querySelectorAll('.km-chip').forEach(btn => {
         if (btn.innerText.trim() === kVal) {
-          btn.className = 'km-chip active px-2.5 py-1 rounded-lg bg-white text-black border border-white text-[11px] font-mono font-bold transition-colors';
+          btn.className = 'km-chip active px-2.5 py-1 rounded-lg bg-[#b86828] text-white border border-[#b86828] text-[11px] font-mono font-bold transition-colors';
         } else {
-          btn.className = 'km-chip px-2.5 py-1 rounded-lg bg-[#090b10] hover:bg-[#181e2b] border border-[#1f2738] text-[11px] font-mono text-[#8e98ab] transition-colors';
+          btn.className = 'km-chip px-2.5 py-1 rounded-lg bg-[#f2ebe0] hover:bg-[#e8decf] border border-[#d6c7b2] text-[11px] font-mono text-[#5c5347] transition-colors';
         }
       });
     }
@@ -1694,6 +1770,9 @@
     window.addEventListener('DOMContentLoaded', () => {
       initRealCarStudio();
       initBrandAndModelSelect();
+      selectFuel('Petrol');
+      selectSeller('Individual');
+      selectOwner('First Owner');
     });
   </script>
 
