@@ -6,13 +6,12 @@ import numpy as np
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, HTMLResponse
-from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 warnings.filterwarnings("ignore")
 
 app = FastAPI(
-    title="AutoPrice AI — Full-Stack Valuation Platform",
+    title="AutoPrice AI — Car Valuation Platform",
     description="Machine learning valuation engine with interactive 3D studio and real-time inference",
     version="1.0.0"
 )
@@ -28,16 +27,6 @@ app.add_middleware(
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def resolve_file(filename: str) -> str:
-    candidates = [
-        os.path.join(BASE_DIR, filename),
-        os.path.join(BASE_DIR, "frontend", filename),
-        os.path.join(os.getcwd(), filename),
-        os.path.join(os.getcwd(), "frontend", filename),
-        filename
-    ]
-    for p in candidates:
-        if os.path.exists(p):
-            return p
     return os.path.join(BASE_DIR, filename)
 
 best_model = joblib.load(resolve_file("best_model.pkl"))
@@ -100,11 +89,6 @@ def serve_car_glb():
     if os.path.exists(fpath):
         return FileResponse(fpath, media_type="model/gltf-binary")
     raise HTTPException(status_code=404, detail="car.glb not found")
-
-
-frontend_dir = os.path.join(BASE_DIR, "frontend")
-if os.path.exists(frontend_dir):
-    app.mount("/frontend", StaticFiles(directory=frontend_dir), name="frontend")
 
 
 @app.get("/health")
